@@ -1,5 +1,7 @@
 // API Client Module - Handles all backend API calls
-const API_BASE_URL = 'http://localhost:3002/api';
+const API_BASE_URL = (typeof window !== 'undefined' && window.location.hostname === 'localhost')
+  ? 'http://localhost:3002/api'
+  : '/api';
 
 class APIClient {
   constructor() {
