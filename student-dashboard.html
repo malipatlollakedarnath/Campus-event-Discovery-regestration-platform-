@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Campus Events</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Campus Events</div>
+            <div class="nav-links">
+                <span id="userEmail" class="user-email"></span>
+                <button onclick="viewMyRegistrations()" class="btn-text">My Registrations</button>
+                <button onclick="logout()" class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="dashboard-header">
+            <h1>Discover Events</h1>
+            <div class="filters">
+                <select id="categoryFilter" onchange="filterEvents()">
+                    <option value="">All Categories</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Placement">Placement</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="eventsGrid" class="events-grid">
+            <!-- Events will be loaded here -->
+        </div>
+
+        <div id="loadingMessage" class="loading">Loading events...</div>
+    </main>
+
+    <!-- Event Details Modal -->
+    <div id="eventModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeEventModal()">&times;</span>
+            <div id="eventDetails"></div>
+        </div>
+    </div>
+
+    <script src="js/api-client.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

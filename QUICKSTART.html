@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - Campus Event Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .quickstart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .step {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .step ol, .step ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .step li {
+            margin-bottom: 0.75rem;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #c7254e;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li:before {
+            content: "✅ ";
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Campus Events</div>
+            <div class="nav-links">
+                <a href="index.html" class="btn-text">← Back Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="quickstart-container">
+        <h1 style="text-align: center; margin-bottom: 3rem;">🚀 Quick Start Guide</h1>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <h3>Step 1: Create Firebase Project</h3>
+            <ol>
+                <li>Go to <a href="https://firebase.google.com/" target="_blank">firebase.google.com</a></li>
+                <li>Click <strong>"Get started"</strong></li>
+                <li>Create a new project called <code>campus-events</code></li>
+                <li>Accept all default settings</li>
+                <li>Click <strong>"Create project"</strong></li>
+                <li>Wait for project to be created (1-2 minutes)</li>
+            </ol>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <h3>Step 2: Enable Firestore Database</h3>
+            <ol>
+                <li>In Firebase Console, click <strong>"Firestore Database"</strong> from left menu</li>
+                <li>Click <strong>"Create Database"</strong></li>
+                <li>Choose <strong>"Start in test mode"</strong> (for development)</li>
+                <li>Select closest region to you</li>
+                <li>Click <strong>"Create"</strong></li>
+                <li>Wait for database to be created</li>
+            </ol>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h3>Step 3: Enable Authentication</h3>
+            <ol>
+                <li>Go to <strong>"Authentication"</strong> from left menu</li>
+                <li>Click <strong>"Get started"</strong></li>
+                <li>Find <strong>"Email/Password"</strong> and click it</li>
+                <li>Toggle <strong>"Enable"</strong> to turn it on</li>
+                <li>Click <strong>"Save"</strong></li>
+            </ol>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <h3>Step 4: Get Firebase Configuration</h3>
+            <ol>
+                <li>In Firebase Console, click the <strong>⚙️ Settings icon</strong> → <strong>"Project settings"</strong></li>
+                <li>Go to <strong>"Your apps"</strong> section</li>
+                <li>Click the web icon <strong>&lt;/&gt;</strong></li>
+                <li>Register your app (give it any name)</li>
+                <li>Copy the entire <code>firebaseConfig</code> object from the code shown</li>
+                <li>Example format:
+                    <pre>{
+  apiKey: "AIzaSyDxxxxxxxxxx",
+  authDomain: "campus-events.firebaseapp.com",
+  projectId: "campus-events",
+  storageBucket: "campus-events.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abc123"
+}</pre>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <h3>Step 5: Update firebase-config.js</h3>
+            <ol>
+                <li>Open the file: <code>js/firebase-config.js</code></li>
+                <li>Find this section:
+                    <pre>const firebaseConfig = {
+    apiKey: "AIzaSyDxxxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "campus-events-xxxxx.firebaseapp.com",
+    projectId: "campus-events-xxxxx",
+    storageBucket: "campus-events-xxxxx.appspot.com",
+    messagingSenderId: "xxxxxxxxx",
+    appId: "1:xxxxxxxxx:web:xxxxxxxxxxxxxxx"
+};</pre>
+                </li>
+                <li>Replace it with your config from Step 4</li>
+                <li>Save the file</li>
+            </ol>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step">
+            <h3>Step 6: Add Firestore Rules (Optional but Recommended)</h3>
+            <ol>
+                <li>In Firebase Console, go to <strong>"Firestore Database"</strong> → <strong>"Rules"</strong> tab</li>
+                <li>Replace all text with rules from <code>FIRESTORE_RULES.txt</code></li>
+                <li>Click <strong>"Publish"</strong></li>
+                <li>If you skip this, use test mode rules (less secure)</li>
+            </ol>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step">
+            <h3>Step 7: Run the Application</h3>
+            <ol>
+                <li>Open <code>index.html</code> in your browser</li>
+                <li>Or use a local server:
+                    <ul>
+                        <li><strong>Python 3:</strong> <code>python -m http.server 8000</code></li>
+                        <li><strong>Node.js:</strong> <code>npx http-server</code></li>
+                        <li><strong>VS Code:</strong> Install Live Server extension → Right-click index.html → Open with Live Server</li>
+                    </ul>
+                </li>
+                <li>Visit: <code>http://localhost:8000</code></li>
+            </ol>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="step">
+            <h3>Step 8: Test the Application</h3>
+            <h4>Create Student Account:</h4>
+            <ol>
+                <li>Click <strong>"Login as Student"</strong></li>
+                <li>Click <strong>"Register here"</strong></li>
+                <li>Enter:
+                    <ul>
+                        <li>Name: Your name</li>
+                        <li>Email: <code>student@example.com</code></li>
+                        <li>Password: <code>password123</code></li>
+                    </ul>
+                </li>
+                <li>Click <strong>"Register"</strong></li>
+            </ol>
+
+            <h4>Create Admin Account:</h4>
+            <ol>
+                <li>Click <strong>"Login as Admin"</strong></li>
+                <li>Enter:
+                    <ul>
+                        <li>Email: <code>admin@admin.com</code></li>
+                        <li>Password: <code>admin123</code></li>
+                    </ul>
+                </li>
+                <li>Click <strong>"Admin Login"</strong> (this creates new admin account)</li>
+            </ol>
+
+            <h4>Create Sample Event (as Admin):</h4>
+            <ol>
+                <li>Go to <strong>"Create Event"</strong> tab</li>
+                <li>Fill in:
+                    <ul>
+                        <li>Title: "Tech Talk 2026"</li>
+                        <li>Description: "Learn about new technologies"</li>
+                        <li>Date: Pick tomorrow's date</li>
+                        <li>Time: 10:00 AM</li>
+                        <li>Venue: "Auditorium Hall"</li>
+                        <li>Category: "Technical"</li>
+                        <li>Capacity: 100</li>
+                        <li>Organizer: "Tech Club"</li>
+                    </ul>
+                </li>
+                <li>Click <strong>"Create Event"</strong></li>
+            </ol>
+
+            <h4>Register as Student (using student account):</h4>
+            <ol>
+                <li>Log in as the student</li>
+                <li>See the "Tech Talk 2026" event</li>
+                <li>Click <strong>"Register"</strong></li>
+                <li>Check "My Registrations" to see it</li>
+            </ol>
+        </div>
+
+        <!-- Checklist -->
+        <div class="step">
+            <h3>✅ Verification Checklist</h3>
+            <ul class="checklist">
+                <li>Firebase project created</li>
+                <li>Firestore Database enabled</li>
+                <li>Authentication enabled (Email/Password)</li>
+                <li>Firebase config updated in firebase-config.js</li>
+                <li>Application runs without errors</li>
+                <li>Students can register and login</li>
+                <li>Admins can create events</li>
+                <li>Students can see and register for events</li>
+                <li>Registrations appear in admin panel</li>
+            </ul>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="step">
+            <h3>🐛 Common Issues</h3>
+            <p><strong>Q: "undefined is not a function" error?</strong></p>
+            <p>A: Check that firebase-config.js has your Firebase credentials. Look at browser console (F12).</p>
+
+            <p><strong>Q: Login button does nothing?</strong></p>
+            <p>A: Make sure Authentication is enabled and Email/Password provider is turned on.</p>
+
+            <p><strong>Q: Events don't appear?</strong></p>
+            <p>A: Check Firestore Database is created and test mode rules are applied.</p>
+
+            <p><strong>Q: Can't register as admin?</strong></p>
+            <p>A: Use email with @admin or admin@college domain (e.g., admin@admin.com).</p>
+
+            <p><strong>Q: Still having issues?</strong></p>
+            <p>A: Check browser console (F12) for error messages. Review README.md for more details.</p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="step">
+            <h3>🎯 Next Steps</h3>
+            <ul>
+                <li>💬 Try creating multiple events</li>
+                <li>👥 Register as different students</li>
+                <li>📊 Test admin features (edit, delete events)</li>
+                <li>📱 Test on mobile devices</li>
+                <li>🚀 Deploy to Firebase Hosting for free</li>
+                <li>🎨 Customize colors and branding</li>
+                <li>✨ Add more features (reviews, notifications, etc.)</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #dcfce7; border-radius: 8px;">
+            <h2>🎉 You're all set!</h2>
+            <p>The platform is ready to use. Click below to get started.</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Go to Platform →</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Campus Event Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
